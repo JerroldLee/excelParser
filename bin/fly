@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+  , path = require('path')
+  , commander = require('commander');
+
+var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib')
+  , core = require(lib + '/core');
+
+
+commander
+  .version('0.0.1')
+  .usage('<command>');
+
+/**
+ * @description: 打印 Hello
+ * @usage: fly hello [-w,name]
+ */
+commander
+  .command('hello')
+  .usage('[option]')
+  .option('-w, --who <name>', 'name')
+  .description('打印Hello')
+  .action(core.sayHello);
+
+/**
+ * @desciption: 读取Excel文件，更新活动页楼层SKU
+ * @usagr: fly update-sku <-s,path> <-t,path>
+ */
+commander
+  .command('update-sku')
+  .usage('-s <path/*.xlxs> -t <path/*.php>')
+  .description('读取 Excel 文件，更新活动页楼层SKU')
+  .option('-s, --source <path>', 'Excel文件路径')
+  .option('-t, --target <path>', '需要更新活动页的PHP文件路径')
+  .action(core.updateSKU);
+
+
+commander.parse(process.argv);

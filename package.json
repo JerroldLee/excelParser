@@ -1,0 +1,17 @@
+{
+  "name": "flyfe",
+  "version": "0.0.1",
+  "description": "feifei tools package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xbird",
+  "license": "ISC",
+  "bin": "./bin/flyfe",
+  "dependencies": {
+    "commander": "~2.2.0",
+    "underscore": "~1.6.0",
+    "node-xlsx": "0.4.0"
+  }
+}
